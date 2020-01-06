@@ -147,12 +147,12 @@ namespace mastersProject1
                 string newChild5 = child2;
                 string newChild6 = child3;
 
-                choose1 = Int32.Parse(newChild1);
-                choose2 = Int32.Parse(newChild2);
-                choose3 = Int32.Parse(newChild3);
-                choose4 = Int32.Parse(newChild4);
-                choose5 = Int32.Parse(newChild5);
-                choose6 = Int32.Parse(newChild6);
+                choose1 = Convert.ToInt32(newChild1, 2);
+                choose2 = Convert.ToInt32(newChild2, 2);
+                choose3 = Convert.ToInt32(newChild3, 2);
+                choose4 = Convert.ToInt32(newChild4, 2);
+                choose5 = Convert.ToInt32(newChild5, 2);
+                choose6 = Convert.ToInt32(newChild6, 2);
 
                 Console.WriteLine(newChild1);
                 Console.WriteLine(newChild2);

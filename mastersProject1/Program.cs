@@ -11,8 +11,8 @@ namespace mastersProject1
         public static void Main()
         {
             Random random = new Random();
-            int counterOfChrom = 0;
-            int iterations = 100;
+            //int counterOfChrom = 0;
+            int iterations = 1000;
             int countTest;
 
 
@@ -105,32 +105,176 @@ namespace mastersProject1
                 times.Add(timeCh8);
                 times.Sort();
 
-                Dictionary<int, string> dicFitnessFunction = new Dictionary<int, string>();
-                dicFitnessFunction.Clear();
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome1);
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome2);
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome3);
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome4);
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome5);
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome6);
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome7);
-                dicFitnessFunction.Add(counterOfChrom++, Chromosome8);
+                string child1 = "";
+                string child2 = "";
+                string child3 = "";
+                string child4 = "";
 
-                Dictionary<Dictionary<int, string>, double> dic = new Dictionary<Dictionary<int, string>, double>();
-                dic.Clear();
-                dic.Add(dicFitnessFunction, timeCh1);
-                dic.Add(dicFitnessFunction, timeCh2);
-                dic.Add(dicFitnessFunction, timeCh3);
-                dic.Add(dicFitnessFunction, timeCh4);
-                dic.Add(dicFitnessFunction, timeCh5);
-                dic.Add(dicFitnessFunction, timeCh6);
-                dic.Add(dicFitnessFunction, timeCh7);
-                dic.Add(dicFitnessFunction, timeCh8);
+                if (times[0] == timeCh1)
+                    {
+                        child1 = Chromosome1;
+                    }
+                    if (times[0] == timeCh2)
+                    {
+                        child1 = Chromosome2;
+                    }
+                    if (times[0] == timeCh3)
+                    {
+                        child1 = Chromosome3;
+                    }
+                    if (times[0] == timeCh4)
+                    {
+                        child1 = Chromosome4;
+                    }
+                    if (times[0] == timeCh5)
+                    {
+                        child1 = Chromosome5;
+                    }
+                    if (times[0] == timeCh6)
+                    {
+                        child1 = Chromosome6;
+                    }
+                    if (times[0] == timeCh7)
+                    {
+                        child1 = Chromosome7;
+                    }
+                    if (times[0] == timeCh8)
+                    {
+                        child1 = Chromosome8;
+                    }
 
-                string child1 = geneticAlgorithm.MakeChild(dic, 0);
-                string child2 = geneticAlgorithm.MakeChild(dic, 1);
-                string child3 = geneticAlgorithm.MakeChild(dic, 2);
-                string child4 = geneticAlgorithm.MakeChild(dic, 3);
+
+
+                if (times[1] == timeCh1)
+                {
+                    child2 = Chromosome1;
+                }
+                if (times[1] == timeCh2)
+                {
+                    child2 = Chromosome2;
+                }
+                if (times[1] == timeCh3)
+                {
+                    child2 = Chromosome3;
+                }
+                if (times[1] == timeCh4)
+                {
+                    child2 = Chromosome4;
+                }
+                if (times[1] == timeCh5)
+                {
+                    child2 = Chromosome5;
+                }
+                if (times[1] == timeCh6)
+                {
+                    child2 = Chromosome6;
+                }
+                if (times[1] == timeCh7)
+                {
+                    child2 = Chromosome7;
+                }
+                if (times[1] == timeCh8)
+                {
+                    child2 = Chromosome8;
+                }
+
+
+
+                if (times[2] == timeCh1)
+                {
+                    child3 = Chromosome1;
+                }
+                if (times[2] == timeCh2)
+                {
+                    child3 = Chromosome2;
+                }
+                if (times[2] == timeCh3)
+                {
+                    child3 = Chromosome3;
+                }
+                if (times[2] == timeCh4)
+                {
+                    child3 = Chromosome4;
+                }
+                if (times[2] == timeCh5)
+                {
+                    child3 = Chromosome5;
+                }
+                if (times[2] == timeCh6)
+                {
+                    child3 = Chromosome6;
+                }
+                if (times[2] == timeCh7)
+                {
+                    child3 = Chromosome7;
+                }
+                if (times[2] == timeCh8)
+                {
+                    child3 = Chromosome8;
+                }
+
+
+                if (times[3] == timeCh1)
+                {
+                    child4 = Chromosome1;
+                }
+                if (times[3] == timeCh2)
+                {
+                    child4 = Chromosome2;
+                }
+                if (times[3] == timeCh3)
+                {
+                    child4 = Chromosome3;
+                }
+                if (times[3] == timeCh4)
+                {
+                    child4 = Chromosome4;
+                }
+                if (times[3] == timeCh5)
+                {
+                    child4 = Chromosome5;
+                }
+                if (times[3] == timeCh6)
+                {
+                    child4 = Chromosome6;
+                }
+                if (times[3] == timeCh7)
+                {
+                    child4 = Chromosome7;
+                }
+                if (times[3] == timeCh8)
+                {
+                    child4 = Chromosome8;
+                }
+
+
+
+                //Dictionary<int, string> dicFitnessFunction = new Dictionary<int, string>();
+                //dicFitnessFunction.Clear();
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome1);
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome2);
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome3);
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome4);
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome5);
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome6);
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome7);
+                //dicFitnessFunction.Add(counterOfChrom++, Chromosome8);
+
+                //Dictionary<Dictionary<int, string>, double> dic = new Dictionary<Dictionary<int, string>, double>();
+                //dic.Clear();
+                //dic.Add(dicFitnessFunction, timeCh1);
+                //dic.Add(dicFitnessFunction, timeCh2);
+                //dic.Add(dicFitnessFunction, timeCh3);
+                //dic.Add(dicFitnessFunction, timeCh4);
+                //dic.Add(dicFitnessFunction, timeCh5);
+                //dic.Add(dicFitnessFunction, timeCh6);
+                //dic.Add(dicFitnessFunction, timeCh7);
+                //dic.Add(dicFitnessFunction, timeCh8);
+
+                //string child1 = geneticAlgorithm.MakeChild(dic, 0);
+                //string child2 = geneticAlgorithm.MakeChild(dic, 1);
+                //string child3 = geneticAlgorithm.MakeChild(dic, 2);
+                //string child4 = geneticAlgorithm.MakeChild(dic, 3);
 
 
                 int crossPoint = random.Next(0, 5);
@@ -196,11 +340,13 @@ namespace mastersProject1
                 Console.WriteLine(newChild6);
                 Console.WriteLine(newChild7);
                 Console.WriteLine(newChild8);
+                Console.WriteLine("\n");
             }
 
-            
+
 
             Console.WriteLine("END");
+            Console.ReadKey();
         }
 
     }

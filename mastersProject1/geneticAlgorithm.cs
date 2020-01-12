@@ -19,5 +19,21 @@ namespace mastersProject1
             return wynikSilnia;
         }
 
+        public static string MakeChromosome(int choose)
+        {
+            string ch = Convert.ToString(choose, 2);
+            string Chromosome = ch.PadLeft(5, '0');
+            return Chromosome;
+        }
+
+        public static string MakeChild(Dictionary<Dictionary<int, string>, double> dic, int position)
+        {
+            var sortedFitnessFunction = dic.OrderBy(timeCh => timeCh.Value);
+            var child1Obj = sortedFitnessFunction.ElementAt(position);
+            var child1Value = child1Obj.Key;
+            var childVal1 = child1Value.ElementAt(position);
+            string child1 = childVal1.Value;
+            return child1;
+        }
     }
 }

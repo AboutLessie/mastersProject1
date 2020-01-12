@@ -18,5 +18,14 @@ namespace mastersProject1
             double time = Convert.ToDouble(timeSum);
             return time;
         }
-   }
+
+        public static double GetTimeFromLog(int choose)
+        {
+            StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
+            filePath1.Append(choose.ToString() + ".txt");
+            string filePathA = filePath1.ToString();
+            double timeCh = readTime.ReadFromLog(filePathA);
+            return timeCh;
+        }
+    }
 }

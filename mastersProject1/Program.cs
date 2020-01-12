@@ -11,8 +11,11 @@ namespace mastersProject1
         public static void Main()
         {
             Random random = new Random();
-
+            int counterOfChrom = 0;
+            int iterations = 100;
             int countTest;
+
+
             Console.WriteLine("Podaj liczbę testów do ułożenia");
             countTest = int.Parse(Console.ReadLine());
 
@@ -49,103 +52,131 @@ namespace mastersProject1
             {
                 choose6 = random.Next(0, Tablica.Length);
             }
+            int choose7 = random.Next(0, Tablica.Length);
+            if (choose7 == choose1 || choose7 == choose2 || choose7 == choose3 || choose7 == choose4 || choose7 == choose5 || choose7 == choose6)
+            {
+                choose5 = random.Next(0, Tablica.Length);
+            }
+            int choose8 = random.Next(0, Tablica.Length);
+            if (choose8 == choose1 || choose8 == choose2 || choose8 == choose3 || choose8 == choose4 || choose8 == choose5 || choose8 == choose6 || choose8 == choose7)
+            {
+                choose6 = random.Next(0, Tablica.Length);
+            }
 
+            Console.WriteLine(choose1);
+            Console.WriteLine(choose2);
+            Console.WriteLine(choose3);
+            Console.WriteLine(choose4);
+            Console.WriteLine(choose5);
+            Console.WriteLine(choose6);
+            Console.WriteLine(choose7);
+            Console.WriteLine(choose8);
 
-
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < iterations; i++)
             {
 
-                string Chromosome1 = Convert.ToString(choose1, 2);
-                string Chromosome01 = Chromosome1.PadLeft(5, '0');
+                string Chromosome1 = geneticAlgorithm.MakeChromosome(choose1);
+                string Chromosome2 = geneticAlgorithm.MakeChromosome(choose2);
+                string Chromosome3 = geneticAlgorithm.MakeChromosome(choose3);
+                string Chromosome4 = geneticAlgorithm.MakeChromosome(choose4);
+                string Chromosome5 = geneticAlgorithm.MakeChromosome(choose5);
+                string Chromosome6 = geneticAlgorithm.MakeChromosome(choose6);
+                string Chromosome7 = geneticAlgorithm.MakeChromosome(choose7);
+                string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8);
 
-                string Chromosome2 = Convert.ToString(choose2, 2);
-                string Chromosome02 = Chromosome2.PadLeft(5, '0');
-
-                string Chromosome3 = Convert.ToString(choose3, 2);
-                string Chromosome03 = Chromosome3.PadLeft(5, '0');
-
-                string Chromosome4 = Convert.ToString(choose4, 2);
-                string Chromosome04 = Chromosome4.PadLeft(5, '0');
-
-                string Chromosome5 = Convert.ToString(choose5, 2);
-                string Chromosome05 = Chromosome5.PadLeft(5, '0');
-
-                string Chromosome6 = Convert.ToString(choose6, 2);
-                string Chromosome06 = Chromosome6.PadLeft(5, '0');
-
-                StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
-                filePath1.Append(choose1.ToString() + ".txt");
-                string filePathA = filePath1.ToString();
-                double timeCh1 = readTime.ReadFromLog(filePathA);
-
-                StringBuilder filePath2 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
-                filePath2.Append(choose2.ToString() + ".txt");
-                string filePathB = filePath2.ToString();
-                double timeCh2 = readTime.ReadFromLog(filePathB);
-
-                StringBuilder filePath3 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
-                filePath3.Append(choose3.ToString() + ".txt");
-                string filePathC = filePath3.ToString();
-                double timeCh3 = readTime.ReadFromLog(filePathC);
-
-                StringBuilder filePath4 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
-                filePath4.Append(choose4.ToString() + ".txt");
-                string filePathD = filePath4.ToString();
-                double timeCh4 = readTime.ReadFromLog(filePathD);
-
-                StringBuilder filePath5 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
-                filePath5.Append(choose5.ToString() + ".txt");
-                string filePathE = filePath5.ToString();
-                double timeCh5 = readTime.ReadFromLog(filePathE);
-
-                StringBuilder filePath6 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
-                filePath6.Append(choose6.ToString() + ".txt");
-                string filePathF = filePath6.ToString();
-                double timeCh6 = readTime.ReadFromLog(filePathF);
+                double timeCh1 = readTime.GetTimeFromLog(choose1);
+                double timeCh2 = readTime.GetTimeFromLog(choose2);
+                double timeCh3 = readTime.GetTimeFromLog(choose3);
+                double timeCh4 = readTime.GetTimeFromLog(choose4);
+                double timeCh5 = readTime.GetTimeFromLog(choose5);
+                double timeCh6 = readTime.GetTimeFromLog(choose6);
+                double timeCh7 = readTime.GetTimeFromLog(choose7);
+                double timeCh8 = readTime.GetTimeFromLog(choose8);
 
 
-                Dictionary<double, string> dicFitnessFunction = new Dictionary<double, string>();
-                dicFitnessFunction.Add(timeCh1, Chromosome01);
-                dicFitnessFunction.Add(timeCh2, Chromosome02);
-                dicFitnessFunction.Add(timeCh3, Chromosome03);
-                dicFitnessFunction.Add(timeCh4, Chromosome04);
-                dicFitnessFunction.Add(timeCh5, Chromosome05);
-                dicFitnessFunction.Add(timeCh6, Chromosome06);
+                List<double> times = new List<double>();
+                times.Add(timeCh1);
+                times.Add(timeCh2);
+                times.Add(timeCh3);
+                times.Add(timeCh4);
+                times.Add(timeCh5);
+                times.Add(timeCh6);
+                times.Add(timeCh7);
+                times.Add(timeCh8);
+                times.Sort();
 
-                SortedDictionary<double, string> sortedFitnessFunction = new SortedDictionary<double, string>(dicFitnessFunction);
+                Dictionary<int, string> dicFitnessFunction = new Dictionary<int, string>();
+                dicFitnessFunction.Clear();
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome1);
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome2);
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome3);
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome4);
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome5);
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome6);
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome7);
+                dicFitnessFunction.Add(counterOfChrom++, Chromosome8);
 
-                var child1Obj = sortedFitnessFunction.ElementAt(0);
-                string child1 = child1Obj.Value;
-                var child2Obj = sortedFitnessFunction.ElementAt(1);
-                string child2 = child2Obj.Value;
-                var child3Obj = sortedFitnessFunction.ElementAt(2);
-                string child3 = child3Obj.Value;
-                var child4Obj = sortedFitnessFunction.ElementAt(3);
-                string child4 = child4Obj.Value;
+                Dictionary<Dictionary<int, string>, double> dic = new Dictionary<Dictionary<int, string>, double>();
+                dic.Clear();
+                dic.Add(dicFitnessFunction, timeCh1);
+                dic.Add(dicFitnessFunction, timeCh2);
+                dic.Add(dicFitnessFunction, timeCh3);
+                dic.Add(dicFitnessFunction, timeCh4);
+                dic.Add(dicFitnessFunction, timeCh5);
+                dic.Add(dicFitnessFunction, timeCh6);
+                dic.Add(dicFitnessFunction, timeCh7);
+                dic.Add(dicFitnessFunction, timeCh8);
+
+                string child1 = geneticAlgorithm.MakeChild(dic, 0);
+                string child2 = geneticAlgorithm.MakeChild(dic, 1);
+                string child3 = geneticAlgorithm.MakeChild(dic, 2);
+                string child4 = geneticAlgorithm.MakeChild(dic, 3);
+
 
                 int crossPoint = random.Next(0, 5);
                 int childLen = child2.Count();
                 string child1Removed = child1.Remove(0, crossPoint);
                 string child2Removed = child2.Remove(crossPoint, childLen - crossPoint);
+                StringBuilder newChildA = new StringBuilder(child1Removed + child2Removed);
+                string newChild1 = newChildA.ToString();
 
+                crossPoint = random.Next(0, 5);
                 int childLen2 = child4.Count();
                 string child3Removed = child3.Remove(0, crossPoint);
                 string child4Removed = child4.Remove(crossPoint, childLen2 - crossPoint);
-
-                int childLen3 = child4.Count();
-                string child5Removed = child1.Remove(0, crossPoint);
-                string child6Removed = child3.Remove(crossPoint, childLen3 - crossPoint);
-
-                StringBuilder newChildA = new StringBuilder(child1Removed + child2Removed);
-                string newChild1 = newChildA.ToString();
                 StringBuilder newChildB = new StringBuilder(child3Removed + child4Removed);
                 string newChild2 = newChildB.ToString();
+
+                crossPoint = random.Next(0, 5);
+                int childLen3 = child3.Count();
+                string child5Removed = child1.Remove(0, crossPoint);
+                string child6Removed = child3.Remove(crossPoint, childLen3 - crossPoint);
                 StringBuilder newChildC = new StringBuilder(child5Removed + child6Removed);
                 string newChild3 = newChildC.ToString();
 
-                string newChild4 = child1;
-                string newChild5 = child2;
-                string newChild6 = child3;
+                crossPoint = random.Next(0, 5);
+                int childLen4 = child4.Count();
+                string child7Removed = child1.Remove(0, crossPoint);
+                string child8Removed = child4.Remove(crossPoint, childLen4 - crossPoint);
+                StringBuilder newChildD = new StringBuilder(child7Removed + child8Removed);
+                string newChild4 = newChildD.ToString();
+
+                crossPoint = random.Next(0, 5);
+                int childLen5 = child3.Count();
+                string child9Removed = child2.Remove(0, crossPoint);
+                string child10Removed = child3.Remove(crossPoint, childLen5 - crossPoint);
+                StringBuilder newChildE = new StringBuilder(child9Removed + child10Removed);
+                string newChild5 = newChildE.ToString();
+
+                crossPoint = random.Next(0, 5);
+                int childLen6 = child4.Count();
+                string child11Removed = child2.Remove(0, crossPoint);
+                string child12Removed = child4.Remove(crossPoint, childLen6 - crossPoint);
+                StringBuilder newChildF = new StringBuilder(child11Removed + child12Removed);
+                string newChild6 = newChildF.ToString();
+
+                string newChild7 = child1;
+                string newChild8 = child2;
 
                 choose1 = Convert.ToInt32(newChild1, 2);
                 choose2 = Convert.ToInt32(newChild2, 2);
@@ -153,6 +184,9 @@ namespace mastersProject1
                 choose4 = Convert.ToInt32(newChild4, 2);
                 choose5 = Convert.ToInt32(newChild5, 2);
                 choose6 = Convert.ToInt32(newChild6, 2);
+                choose7 = Convert.ToInt32(newChild7, 2);
+                choose8 = Convert.ToInt32(newChild8, 2);
+
 
                 Console.WriteLine(newChild1);
                 Console.WriteLine(newChild2);
@@ -160,7 +194,11 @@ namespace mastersProject1
                 Console.WriteLine(newChild4);
                 Console.WriteLine(newChild5);
                 Console.WriteLine(newChild6);
+                Console.WriteLine(newChild7);
+                Console.WriteLine(newChild8);
             }
+
+            
 
             Console.WriteLine("END");
         }

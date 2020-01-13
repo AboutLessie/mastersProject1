@@ -19,10 +19,10 @@ namespace mastersProject1
             return wynikSilnia;
         }
 
-        public static string MakeChromosome(int choose)
+        public static string MakeChromosome(int choose, int lenght)
         {
             string ch = Convert.ToString(choose, 2);
-            string Chromosome = ch.PadLeft(5, '0');
+            string Chromosome = ch.PadLeft(lenght, '0');
             return Chromosome;
         }
 

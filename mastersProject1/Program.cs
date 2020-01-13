@@ -21,6 +21,8 @@ namespace mastersProject1
 
             int a = countTest;
             int Opcje = geneticAlgorithm.Silnia1(a);
+            string OpcjeLength = Convert.ToString(Opcje, 2);
+            int length1 = OpcjeLength.Count();
 
             int[] Tablica = new int[Opcje];
             for (int i = 1; i <= Opcje - 1; i++)
@@ -75,14 +77,14 @@ namespace mastersProject1
             for (int i = 0; i < iterations; i++)
             {
 
-                string Chromosome1 = geneticAlgorithm.MakeChromosome(choose1);
-                string Chromosome2 = geneticAlgorithm.MakeChromosome(choose2);
-                string Chromosome3 = geneticAlgorithm.MakeChromosome(choose3);
-                string Chromosome4 = geneticAlgorithm.MakeChromosome(choose4);
-                string Chromosome5 = geneticAlgorithm.MakeChromosome(choose5);
-                string Chromosome6 = geneticAlgorithm.MakeChromosome(choose6);
-                string Chromosome7 = geneticAlgorithm.MakeChromosome(choose7);
-                string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8);
+                string Chromosome1 = geneticAlgorithm.MakeChromosome(choose1, length1);
+                string Chromosome2 = geneticAlgorithm.MakeChromosome(choose2, length1);
+                string Chromosome3 = geneticAlgorithm.MakeChromosome(choose3, length1);
+                string Chromosome4 = geneticAlgorithm.MakeChromosome(choose4, length1);
+                string Chromosome5 = geneticAlgorithm.MakeChromosome(choose5, length1);
+                string Chromosome6 = geneticAlgorithm.MakeChromosome(choose6, length1);
+                string Chromosome7 = geneticAlgorithm.MakeChromosome(choose7, length1);
+                string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8, length1);
 
                 double timeCh1 = readTime.GetTimeFromLog(choose1);
                 double timeCh2 = readTime.GetTimeFromLog(choose2);

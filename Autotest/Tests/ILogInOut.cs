@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mastersProject1
+namespace Autotest.Tests
 {
-    public class fitnessFunction
+    public interface ILogInOut
     {
-
     }
 }

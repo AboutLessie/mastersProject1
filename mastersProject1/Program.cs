@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autotest;
 
 namespace mastersProject1
 {
     public class Program
     {
-        public static void Main()
+        public void Main()
         {
             Random random = new Random();
             //int counterOfChrom = 0;
             int iterations = 1000;
             int countTest;
-
-
+                              
             Console.WriteLine("Podaj liczbę testów do ułożenia");
             countTest = int.Parse(Console.ReadLine());
 
@@ -86,15 +86,14 @@ namespace mastersProject1
                 string Chromosome7 = geneticAlgorithm.MakeChromosome(choose7, length1);
                 string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8, length1);
 
-                double timeCh1 = readTime.GetTimeFromLog(choose1);
-                double timeCh2 = readTime.GetTimeFromLog(choose2);
-                double timeCh3 = readTime.GetTimeFromLog(choose3);
-                double timeCh4 = readTime.GetTimeFromLog(choose4);
-                double timeCh5 = readTime.GetTimeFromLog(choose5);
-                double timeCh6 = readTime.GetTimeFromLog(choose6);
-                double timeCh7 = readTime.GetTimeFromLog(choose7);
-                double timeCh8 = readTime.GetTimeFromLog(choose8);
-
+                double timeCh1 = RunTest.TestRunner(choose1);
+                double timeCh2 = RunTest.TestRunner(choose2);
+                double timeCh3 = RunTest.TestRunner(choose3);
+                double timeCh4 = RunTest.TestRunner(choose4);
+                double timeCh5 = RunTest.TestRunner(choose5);
+                double timeCh6 = RunTest.TestRunner(choose6);
+                double timeCh7 = RunTest.TestRunner(choose7);
+                double timeCh8 = RunTest.TestRunner(choose8);
 
                 List<double> times = new List<double>();
                 times.Add(timeCh1);

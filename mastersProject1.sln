@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mastersProject1", "mastersProject1\mastersProject1.csproj", "{C2593EAB-137D-455C-80C6-133A51729954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autotest", "Autotest\Autotest.csproj", "{CC075901-3EC1-4804-8B53-6A674D4B1A8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autotest", "Autotest\Autotest.csproj", "{CC075901-3EC1-4804-8B53-6A674D4B1A8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MastarsUI", "MastarsUI\MastarsUI.csproj", "{CD6EE82C-6871-4EA3-B8F1-D13E59C84379}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CC075901-3EC1-4804-8B53-6A674D4B1A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC075901-3EC1-4804-8B53-6A674D4B1A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC075901-3EC1-4804-8B53-6A674D4B1A8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD6EE82C-6871-4EA3-B8F1-D13E59C84379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD6EE82C-6871-4EA3-B8F1-D13E59C84379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD6EE82C-6871-4EA3-B8F1-D13E59C84379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD6EE82C-6871-4EA3-B8F1-D13E59C84379}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

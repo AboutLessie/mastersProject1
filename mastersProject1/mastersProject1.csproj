@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="geneticAlgorithm.cs" />
-    <Compile Include="JsonParser.cs" />
+    <Compile Include="SavePermutation.cs" />
     <Compile Include="PermuteOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,75 +7,44 @@ using System.Threading.Tasks;
 namespace mastersProject1
 {
     public class PermuteOptions
-    {
-        /** 
-        * permutation function 
-        * @param str string to  
-           calculate permutation for 
-        * @param l starting index 
-        * @param r end index 
-        */
-        public static string[] Permute(String str, int l, int r, int Opcje)
+    { 
+        private static void Swap(ref int a, ref int b)
         {
-            string[] TablicaOpcjiUlozenia = new string[Opcje];
-            if (l == r)
+            if (a == b) return;
+
+            var temp = a;
+            a = b;
+            b = temp;
+        }
+
+        public static int[] GetPer(int liczba)
+        {
+            List<int> inters = new List<int>();
+            for(int i = 1; i <= liczba; i++)
             {
-                int mozliwosc = new int();
-                if (TablicaOpcjiUlozenia[0] == null)
-                {
-                    mozliwosc = 0;
-                }
-                Console.WriteLine(str);
-                TablicaOpcjiUlozenia[mozliwosc] = str;
-                mozliwosc++;
+                inters.Add(i);
+            }
+            int[] tablica = inters.ToArray();
+
+            int x = tablica.Length - 1;
+            return GetPer(tablica, 0, x);
+        }
+        public static Stack<int[]> possibilities = new Stack<int[]>();
+        private static int[] GetPer(int[] list, int k, int m)
+        {
+            if (k == m)
+            {
+                possibilities.Push(list);
+                return list;
             }
             else
-            {
-                for (int i = l; i <= r; i++)
+                for (int i = k; i <= m; i++)
                 {
-                    str = swap(str, l, i);
-                    Permute(str, l + 1, r, Opcje);
-                    str = swap(str, l, i);
+                    Swap(ref list[k], ref list[i]);
+                    GetPer(list, k + 1, m);
+                    Swap(ref list[k], ref list[i]);
                 }
-            }
-            return TablicaOpcjiUlozenia;
-        }
-
-        /** 
-        * Swap Characters at position 
-        * @param a string value 
-        * @param i position 1 
-        * @param j position 2 
-        * @return swapped string 
-        */
-        public static String swap(String a, int i, int j)
-        {
-            char temp;
-            char[] charArray = a.ToCharArray();
-            temp = charArray[i];
-            charArray[i] = charArray[j];
-            charArray[j] = temp;
-            string s = new string(charArray);
-            return s;
-        }
-
-        // Driver Code 
-        public static string[] ExecPermute(int choice, int Opcje)
-        {
-            StringBuilder sb = new StringBuilder();
-            String optionsString = "";
-
-            for (int i = 1; i <= choice; i++)
-            {
-                string iString = i.ToString();
-                sb.Append(iString);
-            }
-            optionsString = sb.ToString();
-            String str = optionsString;
-            int n = str.Length;
-            string[] TablicaOpcjiUlozenia = new string[Opcje];
-            TablicaOpcjiUlozenia = Permute(str, 0, n - 1, Opcje);
-            return TablicaOpcjiUlozenia;
+            return null;
         }
     }
 }

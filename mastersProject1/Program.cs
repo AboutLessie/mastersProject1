@@ -15,7 +15,7 @@ namespace mastersProject1
             //int counterOfChrom = 0;
             int iterations = 1000;
             int countTest;
-                              
+
             Console.WriteLine("Podaj liczbę testów do ułożenia");
             countTest = int.Parse(Console.ReadLine());
 
@@ -31,17 +31,10 @@ namespace mastersProject1
                 Tablica[i] = Opcje - 1;
 
             //stworzenie tablicy z wszystkimi możliwymi kombinacjami danej liczby testów
-            string[] OpcjeDoUlozenia = new string[Opcje];
-            OpcjeDoUlozenia = PermuteOptions.ExecPermute(a, Opcje);
-
-            //przeniesienie kombinacji z tablicy do pliku, z którego odczytywana będzie konfiguracja przy wywołaniu testów
-            int ktoreUlozenie = 0;
-            foreach (string s in OpcjeDoUlozenia)
-            {
-                JsonParser.CreateJsonConfigFile(s, ktoreUlozenie);
-                ktoreUlozenie++;
-            }
-
+            PermuteOptions.GetPer(a);
+            int count = PermuteOptions.possibilities.Count;
+            int[][] possibilities = PermuteOptions.possibilities.ToArray();
+            
             //losowanie chromosomów (nie mogą się początkowo powtarzać)
             int choose1 = random.Next(0, Tablica.Length);
             int choose2 = random.Next(0, Tablica.Length);
@@ -102,17 +95,17 @@ namespace mastersProject1
                 string Chromosome5 = geneticAlgorithm.MakeChromosome(choose5, length1);
                 string Chromosome6 = geneticAlgorithm.MakeChromosome(choose6, length1);
                 string Chromosome7 = geneticAlgorithm.MakeChromosome(choose7, length1);
-                string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8, length1); 
-                            
+                string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8, length1);
+
                 //odczytywanie wartości czasu pobranego po wykonaniu testów
-                double timeCh1 = RunTest.TestRunner(choose1);
-                double timeCh2 = RunTest.TestRunner(choose2);
-                double timeCh3 = RunTest.TestRunner(choose3);
-                double timeCh4 = RunTest.TestRunner(choose4);
-                double timeCh5 = RunTest.TestRunner(choose5);
-                double timeCh6 = RunTest.TestRunner(choose6);
-                double timeCh7 = RunTest.TestRunner(choose7);
-                double timeCh8 = RunTest.TestRunner(choose8);
+                double timeCh1 = RunTest.TestRunner(choose1, possibilities[choose1]);
+                double timeCh2 = RunTest.TestRunner(choose2, possibilities[choose1]);
+                double timeCh3 = RunTest.TestRunner(choose3, possibilities[choose1]);
+                double timeCh4 = RunTest.TestRunner(choose4, possibilities[choose1]);
+                double timeCh5 = RunTest.TestRunner(choose5, possibilities[choose1]);
+                double timeCh6 = RunTest.TestRunner(choose6, possibilities[choose1]);
+                double timeCh7 = RunTest.TestRunner(choose7, possibilities[choose1]);
+                double timeCh8 = RunTest.TestRunner(choose8, possibilities[choose1]);
 
                 //wrzucenie wartości czasu do listy i posortowanie od najkrótszego (najlepszego)
                 List<double> times = new List<double>();
@@ -165,7 +158,7 @@ namespace mastersProject1
                 {
                     child1 = Chromosome8;
                 }
-                             
+
                 if (times[1] == timeCh1)
                 {
                     child2 = Chromosome1;

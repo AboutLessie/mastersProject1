@@ -12,9 +12,9 @@ namespace Autotest.Tests
     {
         private readonly IMainPage _mainPage;
 
-        public LogInOut(IMainPage mainPage)
+        public LogInOut()
         {
-            _mainPage = mainPage;
+
         }
 
         public void Test1(IWebDriver driver)

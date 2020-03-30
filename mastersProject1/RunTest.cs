@@ -33,17 +33,17 @@ namespace mastersProject1
             return fileExist;
         }
 
-        public static double TestRunner(int choose)
+        public static double TestRunner(int choose, int[] chooseList)
         {
             if(!LogExist(choose))
             {
-                RunAllTest();
+                RunAllTest(chooseList);
             }
             double timeCh = readTime.GetTimeFromLog(choose);
             return timeCh;
         }
 
-        public static void RunAllTest()
+        public static void RunAllTest(int[] chooseList)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -55,9 +55,12 @@ namespace mastersProject1
 
                 LogInOut logIn = new LogInOut();
                 logIn.Test1(driver);
+                logIn.Test2(driver);
+                logIn.Test3(driver);
+                logIn.Test4(driver);
 
                 LogMaker log = new LogMaker();
-                //og.AddToLog("Udało się!");
+                //log.AddToLog("Udało się!");
             }
             catch (Exception e)
             {

@@ -9,7 +9,7 @@ namespace mastersProject1
 {
     public class Program
     {
-        public void Main()
+        public static void Main()
         {
             Random random = new Random();
             //int counterOfChrom = 0;
@@ -19,15 +19,30 @@ namespace mastersProject1
             Console.WriteLine("Podaj liczbę testów do ułożenia");
             countTest = int.Parse(Console.ReadLine());
 
+            //określenie ile jest możliwych kombinacji z danej liczby testów
             int a = countTest;
             int Opcje = geneticAlgorithm.Silnia1(a);
             string OpcjeLength = Convert.ToString(Opcje, 2);
             int length1 = OpcjeLength.Count();
 
+            //utworzenie tablicy do określenia długości binarnej wersji chromosomu
             int[] Tablica = new int[Opcje];
             for (int i = 1; i <= Opcje - 1; i++)
                 Tablica[i] = Opcje - 1;
 
+            //stworzenie tablicy z wszystkimi możliwymi kombinacjami danej liczby testów
+            string[] OpcjeDoUlozenia = new string[Opcje];
+            OpcjeDoUlozenia = PermuteOptions.ExecPermute(a, Opcje);
+
+            //przeniesienie kombinacji z tablicy do pliku, z którego odczytywana będzie konfiguracja przy wywołaniu testów
+            int ktoreUlozenie = 0;
+            foreach (string s in OpcjeDoUlozenia)
+            {
+                JsonParser.CreateJsonConfigFile(s, ktoreUlozenie);
+                ktoreUlozenie++;
+            }
+
+            //losowanie chromosomów (nie mogą się początkowo powtarzać)
             int choose1 = random.Next(0, Tablica.Length);
             int choose2 = random.Next(0, Tablica.Length);
             if (choose1 == choose2)
@@ -74,9 +89,12 @@ namespace mastersProject1
             Console.WriteLine(choose7);
             Console.WriteLine(choose8);
 
+
+            //WYKONANIE i RAZY ALGORYTMU GENETYCZNEGO - UZYSKIWANIE NOWYCH POKOLEŃ i RAZY
             for (int i = 0; i < iterations; i++)
             {
 
+                //tworzenie chromosomow w postacji binarnej na podstawie ich numeru np. 1 = 00000001, 2 = 00000010 itp
                 string Chromosome1 = geneticAlgorithm.MakeChromosome(choose1, length1);
                 string Chromosome2 = geneticAlgorithm.MakeChromosome(choose2, length1);
                 string Chromosome3 = geneticAlgorithm.MakeChromosome(choose3, length1);
@@ -84,8 +102,9 @@ namespace mastersProject1
                 string Chromosome5 = geneticAlgorithm.MakeChromosome(choose5, length1);
                 string Chromosome6 = geneticAlgorithm.MakeChromosome(choose6, length1);
                 string Chromosome7 = geneticAlgorithm.MakeChromosome(choose7, length1);
-                string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8, length1);
-
+                string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8, length1); 
+                            
+                //odczytywanie wartości czasu pobranego po wykonaniu testów
                 double timeCh1 = RunTest.TestRunner(choose1);
                 double timeCh2 = RunTest.TestRunner(choose2);
                 double timeCh3 = RunTest.TestRunner(choose3);
@@ -95,6 +114,7 @@ namespace mastersProject1
                 double timeCh7 = RunTest.TestRunner(choose7);
                 double timeCh8 = RunTest.TestRunner(choose8);
 
+                //wrzucenie wartości czasu do listy i posortowanie od najkrótszego (najlepszego)
                 List<double> times = new List<double>();
                 times.Add(timeCh1);
                 times.Add(timeCh2);
@@ -106,46 +126,46 @@ namespace mastersProject1
                 times.Add(timeCh8);
                 times.Sort();
 
+                //zainicjowanie nowego pokolenia
                 string child1 = "";
                 string child2 = "";
                 string child3 = "";
                 string child4 = "";
 
+                //wybranie najsilniejszych chromosomów aby powstały z nich 4 nowe osobniki
                 if (times[0] == timeCh1)
-                    {
-                        child1 = Chromosome1;
-                    }
-                    if (times[0] == timeCh2)
-                    {
-                        child1 = Chromosome2;
-                    }
-                    if (times[0] == timeCh3)
-                    {
-                        child1 = Chromosome3;
-                    }
-                    if (times[0] == timeCh4)
-                    {
-                        child1 = Chromosome4;
-                    }
-                    if (times[0] == timeCh5)
-                    {
-                        child1 = Chromosome5;
-                    }
-                    if (times[0] == timeCh6)
-                    {
-                        child1 = Chromosome6;
-                    }
-                    if (times[0] == timeCh7)
-                    {
-                        child1 = Chromosome7;
-                    }
-                    if (times[0] == timeCh8)
-                    {
-                        child1 = Chromosome8;
-                    }
-
-
-
+                {
+                    child1 = Chromosome1;
+                }
+                if (times[0] == timeCh2)
+                {
+                    child1 = Chromosome2;
+                }
+                if (times[0] == timeCh3)
+                {
+                    child1 = Chromosome3;
+                }
+                if (times[0] == timeCh4)
+                {
+                    child1 = Chromosome4;
+                }
+                if (times[0] == timeCh5)
+                {
+                    child1 = Chromosome5;
+                }
+                if (times[0] == timeCh6)
+                {
+                    child1 = Chromosome6;
+                }
+                if (times[0] == timeCh7)
+                {
+                    child1 = Chromosome7;
+                }
+                if (times[0] == timeCh8)
+                {
+                    child1 = Chromosome8;
+                }
+                             
                 if (times[1] == timeCh1)
                 {
                     child2 = Chromosome1;
@@ -178,9 +198,6 @@ namespace mastersProject1
                 {
                     child2 = Chromosome8;
                 }
-
-
-
                 if (times[2] == timeCh1)
                 {
                     child3 = Chromosome1;
@@ -249,35 +266,7 @@ namespace mastersProject1
                 }
 
 
-
-                //Dictionary<int, string> dicFitnessFunction = new Dictionary<int, string>();
-                //dicFitnessFunction.Clear();
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome1);
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome2);
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome3);
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome4);
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome5);
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome6);
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome7);
-                //dicFitnessFunction.Add(counterOfChrom++, Chromosome8);
-
-                //Dictionary<Dictionary<int, string>, double> dic = new Dictionary<Dictionary<int, string>, double>();
-                //dic.Clear();
-                //dic.Add(dicFitnessFunction, timeCh1);
-                //dic.Add(dicFitnessFunction, timeCh2);
-                //dic.Add(dicFitnessFunction, timeCh3);
-                //dic.Add(dicFitnessFunction, timeCh4);
-                //dic.Add(dicFitnessFunction, timeCh5);
-                //dic.Add(dicFitnessFunction, timeCh6);
-                //dic.Add(dicFitnessFunction, timeCh7);
-                //dic.Add(dicFitnessFunction, timeCh8);
-
-                //string child1 = geneticAlgorithm.MakeChild(dic, 0);
-                //string child2 = geneticAlgorithm.MakeChild(dic, 1);
-                //string child3 = geneticAlgorithm.MakeChild(dic, 2);
-                //string child4 = geneticAlgorithm.MakeChild(dic, 3);
-
-
+                //krzyżowanie najlepszych osobników
                 int crossPoint = random.Next(0, 5);
                 int childLen = child2.Count();
                 string child1Removed = child1.Remove(0, crossPoint);
@@ -320,9 +309,11 @@ namespace mastersProject1
                 StringBuilder newChildF = new StringBuilder(child11Removed + child12Removed);
                 string newChild6 = newChildF.ToString();
 
+                //przepisanie dwóch najlepszych osobników bez krzyżowania
                 string newChild7 = child1;
                 string newChild8 = child2;
 
+                //przekształcenie chromosomów z postaci binarnej na postać dziesiętną
                 choose1 = Convert.ToInt32(newChild1, 2);
                 choose2 = Convert.ToInt32(newChild2, 2);
                 choose3 = Convert.ToInt32(newChild3, 2);

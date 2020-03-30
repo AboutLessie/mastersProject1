@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace mastersProject1
 {
     public class readTime
@@ -27,5 +28,6 @@ namespace mastersProject1
             double timeCh = readTime.ReadFromLog(filePathA);
             return timeCh;
         }
+
     }
 }

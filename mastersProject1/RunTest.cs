@@ -9,6 +9,7 @@ using Autotest;
 using Autotest.Configuration;
 using Autotest.Tests;
 using Autotest.Logger;
+using System.Diagnostics;
 
 namespace mastersProject1
 {
@@ -44,25 +45,30 @@ namespace mastersProject1
 
         public static void RunAllTest()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
             try
             {
                 IWebDriver driver;
                 driver = Configure.BrowserChoose("Chrome");
 
                 LogInOut logIn = new LogInOut();
-                logIn.LogInTest(driver);
+                logIn.Test1(driver);
 
                 LogMaker log = new LogMaker();
-                log.AddToLog("Udało się!");
+                //og.AddToLog("Udało się!");
             }
             catch (Exception e)
             {
                 LogMaker log = new LogMaker();
-                log.AddToLog("Error " + e);
+                //log.AddToLog("Error " + e);
             }
             finally
             {
                 LogMaker log = new LogMaker();
+                sw.Stop();
+                log.AddToLog(sw.Elapsed.ToString());
                 log.CloseLog();
             }
         }

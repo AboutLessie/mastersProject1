@@ -47,6 +47,7 @@ namespace mastersProject1
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
+            
 
             try
             {
@@ -54,6 +55,8 @@ namespace mastersProject1
                 driver = Configure.BrowserChoose("Chrome");
 
                 LogInOut logIn = new LogInOut();
+
+                //for (int i=1; i<=)
                 logIn.Test1(driver);
                 logIn.Test2(driver);
                 logIn.Test3(driver);

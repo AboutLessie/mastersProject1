@@ -27,50 +27,50 @@ namespace mastersProject1
 
             //utworzenie tablicy do określenia długości binarnej wersji chromosomu
             int[] Tablica = new int[Opcje];
-            for (int i = 1; i <= Opcje - 1; i++)
+            for (int i = 0; i < Opcje - 1; i++)
                 Tablica[i] = Opcje - 1;
 
             //stworzenie tablicy z wszystkimi możliwymi kombinacjami danej liczby testów
             PermuteOptions.GetPer(a);
             int count = PermuteOptions.possibilities.Count;
             int[][] possibilities = PermuteOptions.possibilities.ToArray();
-            
+            int maxTablica = Tablica.Length - 1;
             //losowanie chromosomów (nie mogą się początkowo powtarzać)
-            int choose1 = random.Next(0, Tablica.Length);
-            int choose2 = random.Next(0, Tablica.Length);
+            int choose1 = random.Next(0, maxTablica);
+            int choose2 = random.Next(0, maxTablica);
             if (choose1 == choose2)
             {
-                choose2 = random.Next(0, Tablica.Length);
+                choose2 = random.Next(0, maxTablica);
             }
-            int choose3 = random.Next(0, Tablica.Length);
+            int choose3 = random.Next(0, maxTablica);
             if (choose3 == choose1 || choose3 == choose2)
             {
-                choose3 = random.Next(0, Tablica.Length);
+                choose3 = random.Next(0, maxTablica);
             }
-            int choose4 = random.Next(0, Tablica.Length);
+            int choose4 = random.Next(0, maxTablica);
             if (choose4 == choose1 || choose4 == choose2 || choose4 == choose3)
             {
-                choose4 = random.Next(0, Tablica.Length);
+                choose4 = random.Next(0, maxTablica);
             }
-            int choose5 = random.Next(0, Tablica.Length);
+            int choose5 = random.Next(0, maxTablica);
             if (choose5 == choose1 || choose5 == choose2 || choose5 == choose3 || choose5 == choose4)
             {
-                choose5 = random.Next(0, Tablica.Length);
+                choose5 = random.Next(0, maxTablica);
             }
-            int choose6 = random.Next(0, Tablica.Length);
+            int choose6 = random.Next(0, maxTablica);
             if (choose6 == choose1 || choose6 == choose2 || choose6 == choose3 || choose6 == choose4 || choose6 == choose5)
             {
-                choose6 = random.Next(0, Tablica.Length);
+                choose6 = random.Next(0, maxTablica);
             }
-            int choose7 = random.Next(0, Tablica.Length);
+            int choose7 = random.Next(0, maxTablica);
             if (choose7 == choose1 || choose7 == choose2 || choose7 == choose3 || choose7 == choose4 || choose7 == choose5 || choose7 == choose6)
             {
-                choose5 = random.Next(0, Tablica.Length);
+                choose5 = random.Next(0, maxTablica);
             }
-            int choose8 = random.Next(0, Tablica.Length);
+            int choose8 = random.Next(0, maxTablica);
             if (choose8 == choose1 || choose8 == choose2 || choose8 == choose3 || choose8 == choose4 || choose8 == choose5 || choose8 == choose6 || choose8 == choose7)
             {
-                choose6 = random.Next(0, Tablica.Length);
+                choose6 = random.Next(0, maxTablica);
             }
 
             Console.WriteLine(choose1);
@@ -98,14 +98,14 @@ namespace mastersProject1
                 string Chromosome8 = geneticAlgorithm.MakeChromosome(choose8, length1);
 
                 //odczytywanie wartości czasu pobranego po wykonaniu testów
-                double timeCh1 = RunTest.TestRunner(choose1, possibilities[choose1]);
-                double timeCh2 = RunTest.TestRunner(choose2, possibilities[choose1]);
-                double timeCh3 = RunTest.TestRunner(choose3, possibilities[choose1]);
-                double timeCh4 = RunTest.TestRunner(choose4, possibilities[choose1]);
-                double timeCh5 = RunTest.TestRunner(choose5, possibilities[choose1]);
-                double timeCh6 = RunTest.TestRunner(choose6, possibilities[choose1]);
-                double timeCh7 = RunTest.TestRunner(choose7, possibilities[choose1]);
-                double timeCh8 = RunTest.TestRunner(choose8, possibilities[choose1]);
+                double timeCh1 = RunTest.TestRunner(choose1, possibilities[choose1 - 1]);
+                double timeCh2 = RunTest.TestRunner(choose2, possibilities[choose2 - 1]);
+                double timeCh3 = RunTest.TestRunner(choose3, possibilities[choose3 - 1]);
+                double timeCh4 = RunTest.TestRunner(choose4, possibilities[choose4 - 1]);
+                double timeCh5 = RunTest.TestRunner(choose5, possibilities[choose5 - 1]);
+                double timeCh6 = RunTest.TestRunner(choose6, possibilities[choose6 - 1]);
+                double timeCh7 = RunTest.TestRunner(choose7, possibilities[choose7 - 1]);
+                double timeCh8 = RunTest.TestRunner(choose8, possibilities[choose8 - 1]);
 
                 //wrzucenie wartości czasu do listy i posortowanie od najkrótszego (najlepszego)
                 List<double> times = new List<double>();
@@ -316,6 +316,38 @@ namespace mastersProject1
                 choose7 = Convert.ToInt32(newChild7, 2);
                 choose8 = Convert.ToInt32(newChild8, 2);
 
+                if (choose1 > maxTablica)
+                {
+                    choose1 = maxTablica;
+                }
+                if (choose2 > maxTablica)
+                {
+                    choose2 = maxTablica;
+                }
+                if (choose3 > maxTablica)
+                { 
+                    choose3 = maxTablica;
+                }
+                if (choose4 > maxTablica)
+                {
+                    choose4 = maxTablica;
+                }
+                if (choose5 > maxTablica)
+                {
+                    choose5 = maxTablica;
+                }
+                if (choose6 > maxTablica)
+                {
+                    choose6 = maxTablica;
+                }
+                if (choose7 > maxTablica)
+                {
+                    choose7 = maxTablica;
+                }
+                if (choose8 > maxTablica)
+                {
+                    choose8 = maxTablica;
+                }
 
                 Console.WriteLine(newChild1);
                 Console.WriteLine(newChild2);

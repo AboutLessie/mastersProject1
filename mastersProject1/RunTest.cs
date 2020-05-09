@@ -1,11 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Autotest;
 using Autotest.Configuration;
 using Autotest.Tests;
 using Autotest.Logger;
@@ -15,7 +11,6 @@ namespace mastersProject1
 {
     public class RunTest
     {
-
         private readonly IConfigure _configure;
         public RunTest(int chosenTest, IConfigure configure)
         {
@@ -23,7 +18,6 @@ namespace mastersProject1
             _configure = configure;
         }
      
-        
         public static Boolean LogExist(int choose)
         {
             StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
@@ -48,7 +42,6 @@ namespace mastersProject1
             Stopwatch sw = new Stopwatch();
             sw.Start();
             
-
             try
             {
                 IWebDriver driver;
@@ -56,19 +49,16 @@ namespace mastersProject1
 
                 LogInOut logIn = new LogInOut();
 
-                //for (int i=1; i<=)
                 logIn.Test1(driver);
                 logIn.Test2(driver);
                 logIn.Test3(driver);
                 logIn.Test4(driver);
 
                 LogMaker log = new LogMaker();
-                //log.AddToLog("Udało się!");
             }
             catch (Exception e)
             {
                 LogMaker log = new LogMaker();
-                //log.AddToLog("Error " + e);
             }
             finally
             {
@@ -78,8 +68,5 @@ namespace mastersProject1
                 log.CloseLog();
             }
         }
-
-
-
     }
 }

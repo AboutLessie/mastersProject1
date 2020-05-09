@@ -33,16 +33,16 @@
             this.uamLogo = new System.Windows.Forms.PictureBox();
             this.powitanieLbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numberOfTestsTBX = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nextBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numberOfTestsTBX = new System.Windows.Forms.TextBox();
-            this.resultTBX = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.moreInfoBTN = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.resultTBX = new System.Windows.Forms.ListBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uamLogo)).BeginInit();
             this.panel2.SuspendLayout();
@@ -90,6 +90,22 @@
             this.panel2.Size = new System.Drawing.Size(561, 355);
             this.panel2.TabIndex = 4;
             // 
+            // numberOfTestsTBX
+            // 
+            this.numberOfTestsTBX.Location = new System.Drawing.Point(40, 226);
+            this.numberOfTestsTBX.Name = "numberOfTestsTBX";
+            this.numberOfTestsTBX.Size = new System.Drawing.Size(100, 20);
+            this.numberOfTestsTBX.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(37, 183);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(187, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Wprowadź ile testów należy wykonać:";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::MastarsUI.Properties.Resources.logo;
@@ -131,39 +147,14 @@
             this.panel3.Size = new System.Drawing.Size(560, 357);
             this.panel3.TabIndex = 1;
             // 
-            // pictureBox2
+            // moreInfoBTN
             // 
-            this.pictureBox2.Image = global::MastarsUI.Properties.Resources.logo;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(554, 123);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 183);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Wprowadź ile testów należy wykonać:";
-            // 
-            // numberOfTestsTBX
-            // 
-            this.numberOfTestsTBX.Location = new System.Drawing.Point(40, 226);
-            this.numberOfTestsTBX.Name = "numberOfTestsTBX";
-            this.numberOfTestsTBX.Size = new System.Drawing.Size(100, 20);
-            this.numberOfTestsTBX.TabIndex = 2;
-            // 
-            // resultTBX
-            // 
-            this.resultTBX.FormattingEnabled = true;
-            this.resultTBX.Location = new System.Drawing.Point(29, 226);
-            this.resultTBX.Name = "resultTBX";
-            this.resultTBX.Size = new System.Drawing.Size(303, 95);
-            this.resultTBX.TabIndex = 3;
+            this.moreInfoBTN.Location = new System.Drawing.Point(376, 285);
+            this.moreInfoBTN.Name = "moreInfoBTN";
+            this.moreInfoBTN.Size = new System.Drawing.Size(75, 23);
+            this.moreInfoBTN.TabIndex = 5;
+            this.moreInfoBTN.Text = "Szczegóły";
+            this.moreInfoBTN.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -174,14 +165,23 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Najlepszy wynik uzyskały następujące konfiguracje testów:";
             // 
-            // moreInfoBTN
+            // resultTBX
             // 
-            this.moreInfoBTN.Location = new System.Drawing.Point(376, 285);
-            this.moreInfoBTN.Name = "moreInfoBTN";
-            this.moreInfoBTN.Size = new System.Drawing.Size(75, 23);
-            this.moreInfoBTN.TabIndex = 5;
-            this.moreInfoBTN.Text = "Szczegóły";
-            this.moreInfoBTN.UseVisualStyleBackColor = true;
+            this.resultTBX.FormattingEnabled = true;
+            this.resultTBX.Location = new System.Drawing.Point(29, 226);
+            this.resultTBX.Name = "resultTBX";
+            this.resultTBX.Size = new System.Drawing.Size(303, 95);
+            this.resultTBX.TabIndex = 3;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::MastarsUI.Properties.Resources.logo;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(554, 123);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -193,7 +193,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.nextBtn);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.Name = "Form1";
             this.Text = "Form1";

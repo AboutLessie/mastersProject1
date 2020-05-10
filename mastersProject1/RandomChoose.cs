@@ -8,10 +8,10 @@ namespace mastersProject1
 {
     public class RandomChoose
     {
-        public static void RandomCalculations(int iterations, int countTest)
+        public void RandomCalculations(int iterations, int countTest)
         {
             Console.WriteLine("Random Calculations");
-
+            readTime rt = new readTime();
             Random random = new System.Random();
             //int counterOfChrom = 0;
             
@@ -25,14 +25,15 @@ namespace mastersProject1
                 Tablica[i] = Opcje - 1;
 
             //stworzenie tablicy z wszystkimi możliwymi kombinacjami danej liczby testów
-            PermuteOptions.GetPer(a);
-            int count = PermuteOptions.possibilities.Count;
-            int[][] possibilities = PermuteOptions.possibilities.ToArray();
+            PermuteOptions po = new PermuteOptions();
+            po.GetPer(a);
+            int count = po.possibilities.Count;
+            int[][] possibilities = po.possibilities.ToArray();
             int maxTablica = Tablica.Length - 1;
 
             int chooseA = random.Next(0, maxTablica);
             //double timeA = RunTest.TestRunner(chooseA, possibilities[chooseA - 1]);
-            double timeA = readTime.GetTimeFromLog(chooseA);
+            double timeA = rt.GetTimeFromLog(chooseA);
             Console.WriteLine("{0} time={1}", chooseA, timeA);
             
             for (int i = 0; i < iterations; i++)
@@ -41,7 +42,7 @@ namespace mastersProject1
                 int resultChoose;
                 int chooseB = random.Next(0, maxTablica);
                 //double timeB = RunTest.TestRunner(chooseB, possibilities[chooseB - 1]);
-                double timeB = readTime.GetTimeFromLog(chooseB);
+                double timeB = rt.GetTimeFromLog(chooseB);
                 Console.WriteLine("{0} time={1}", chooseB, timeB);
                 if (timeA > timeB)
                 {

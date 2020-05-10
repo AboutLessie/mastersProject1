@@ -17,7 +17,7 @@ namespace mastersProject1
             b = temp;
         }
 
-        public static int[] GetPer(int liczba)
+        public int[] GetPer(int liczba)
         {
             List<int> inters = new List<int>();
             for(int i = 1; i <= liczba; i++)
@@ -29,8 +29,8 @@ namespace mastersProject1
             int x = tablica.Length - 1;
             return GetPer(tablica, 0, x);
         }
-        public static Stack<int[]> possibilities = new Stack<int[]>();
-        private static int[] GetPer(int[] list, int k, int m)
+        public Stack<int[]> possibilities = new Stack<int[]>();
+        private int[] GetPer(int[] list, int k, int m)
         {
             if (k == m)
             {

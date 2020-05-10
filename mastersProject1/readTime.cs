@@ -20,13 +20,13 @@ namespace mastersProject1
             return time;
         }
 
-        public static double GetTimeFromLog(int choose)
+        public double GetTimeFromLog(int choose)
         {
             //StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
             StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\OSOBISTE\UAM\Magisterka\Log\");
             filePath1.Append(choose.ToString() + ".txt");
             string filePathA = filePath1.ToString();
-            double timeCh = readTime.ReadFromLog(filePathA);
+            double timeCh = ReadFromLog(filePathA);
             return timeCh;
         }
 

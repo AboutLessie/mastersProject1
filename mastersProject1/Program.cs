@@ -16,9 +16,11 @@ namespace mastersProject1
             Console.WriteLine("Podaj liczbę testów do ułożenia");
             countTest = int.Parse(Console.ReadLine());
 
-            GeneticMainProgram.GeneticAlgorithm(iterations, countTest);
+            GeneticMainProgram gmp = new GeneticMainProgram();
+            gmp.GeneticAlgorithm(iterations, countTest);
 
-            RandomChoose.RandomCalculations(iterations, countTest);
+            RandomChoose rc = new RandomChoose();
+            rc.RandomCalculations(iterations, countTest);
 
         }
     }

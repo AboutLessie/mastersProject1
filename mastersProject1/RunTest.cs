@@ -13,12 +13,6 @@ namespace mastersProject1
 {
     public class RunTest
     {
-        private readonly IConfigure _configure;
-        public RunTest(int chosenTest, IConfigure configure)
-        {
-            int choose = chosenTest;
-            _configure = configure;
-        }
      
         public static Boolean LogExist(int choose)
         {
@@ -30,20 +24,21 @@ namespace mastersProject1
             return fileExist;
         }
 
-        public static double TestRunner(int choose, int[] chooseList)
+        public double TestRunner(int choose, int[] chooseList)
         {
+            readTime rt = new readTime();
             if(!LogExist(choose))
             {
                 RunAllTest(chooseList);
             }
-            double timeCh = readTime.GetTimeFromLog(choose);
+            double timeCh = rt.GetTimeFromLog(choose);
             return timeCh;
         }
 
-        public static void RunAllTest(int[] chooseList)
+        public void RunAllTest(int[] chooseList)
         {
             List<string> orderTests = new List<string>();
-            for (int i=0;i<=chooseList.Length;i++)
+            for (int i=0;i<chooseList.Length;i++)
             {
                 orderTests.Add("Test" + chooseList[i].ToString());
             }
@@ -58,12 +53,12 @@ namespace mastersProject1
 
                 LogInOut logIn = new LogInOut();
 
-                /*for(int j = 0; j < orderTests.Count; j++)
+                for(int j = 0; j < orderTests.Count; j++)
                 {
                     MethodInfo mi = this.GetType().GetMethod(orderTests[j]);
                     LogInOut logInClass = new LogInOut();
                     mi.Invoke(this, null);
-                }*/
+                }
                 
                 LogMaker log = new LogMaker();
             }

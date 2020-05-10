@@ -8,10 +8,12 @@ namespace mastersProject1
 {
     public class GeneticMainProgram
     {
-        public static void GeneticAlgorithm(int iterations, int countTest)
+        public void GeneticAlgorithm(int iterations, int countTest)
         {
             System.Random random = new System.Random();
             //int counterOfChrom = 0;
+            readTime rt = new readTime();
+            RunTest runT = new RunTest();
 
             //określenie ile jest możliwych kombinacji z danej liczby testów
             int a = countTest;
@@ -25,9 +27,10 @@ namespace mastersProject1
                 Tablica[i] = Opcje - 1;
 
             //stworzenie tablicy z wszystkimi możliwymi kombinacjami danej liczby testów
-            PermuteOptions.GetPer(a);
-            int count = PermuteOptions.possibilities.Count;
-            int[][] possibilities = PermuteOptions.possibilities.ToArray();
+            PermuteOptions po = new PermuteOptions();
+            po.GetPer(a);
+            int count = po.possibilities.Count;
+            int[][] possibilities = po.possibilities.ToArray();
             int maxTablica = Tablica.Length - 1;
             //losowanie chromosomów (nie mogą się początkowo powtarzać)
             int choose1 = random.Next(1, maxTablica);
@@ -124,14 +127,14 @@ namespace mastersProject1
                     choose8 = random.Next(1, maxTablica);
                 }
                 //odczytywanie wartości czasu pobranego po wykonaniu testów
-                double timeCh1 = RunTest.TestRunner(choose1, possibilities[choose1 - 1]);
-                double timeCh2 = RunTest.TestRunner(choose2, possibilities[choose2 - 1]);
-                double timeCh3 = RunTest.TestRunner(choose3, possibilities[choose3 - 1]);
-                double timeCh4 = RunTest.TestRunner(choose4, possibilities[choose4 - 1]);
-                double timeCh5 = RunTest.TestRunner(choose5, possibilities[choose5 - 1]);
-                double timeCh6 = RunTest.TestRunner(choose6, possibilities[choose6 - 1]);
-                double timeCh7 = RunTest.TestRunner(choose7, possibilities[choose7 - 1]);
-                double timeCh8 = RunTest.TestRunner(choose8, possibilities[choose8 - 1]);
+                double timeCh1 = runT.TestRunner(choose1, possibilities[choose1]);
+                double timeCh2 = runT.TestRunner(choose2, possibilities[choose2]);
+                double timeCh3 = runT.TestRunner(choose3, possibilities[choose3]);
+                double timeCh4 = runT.TestRunner(choose4, possibilities[choose4]);
+                double timeCh5 = runT.TestRunner(choose5, possibilities[choose5]);
+                double timeCh6 = runT.TestRunner(choose6, possibilities[choose6]);
+                double timeCh7 = runT.TestRunner(choose7, possibilities[choose7]);
+                double timeCh8 = runT.TestRunner(choose8, possibilities[choose8]);
 
                 //wrzucenie wartości czasu do listy i posortowanie od najkrótszego (najlepszego)
                 List<double> times = new List<double>();
@@ -386,14 +389,14 @@ namespace mastersProject1
                 Console.WriteLine("\n");
             }
 
-            double time1 = readTime.GetTimeFromLog(choose1);
-            double time2 = readTime.GetTimeFromLog(choose2);
-            double time3 = readTime.GetTimeFromLog(choose3);
-            double time4 = readTime.GetTimeFromLog(choose4);
-            double time5 = readTime.GetTimeFromLog(choose5);
-            double time6 = readTime.GetTimeFromLog(choose6);
-            double time7 = readTime.GetTimeFromLog(choose7);
-            double time8 = readTime.GetTimeFromLog(choose8);
+            double time1 = rt.GetTimeFromLog(choose1);
+            double time2 = rt.GetTimeFromLog(choose2);
+            double time3 = rt.GetTimeFromLog(choose3);
+            double time4 = rt.GetTimeFromLog(choose4);
+            double time5 = rt.GetTimeFromLog(choose5);
+            double time6 = rt.GetTimeFromLog(choose6);
+            double time7 = rt.GetTimeFromLog(choose7);
+            double time8 = rt.GetTimeFromLog(choose8);
 
             Console.WriteLine("Choose = {0} Time = {1}", choose1, time1);
             Console.WriteLine("Choose = {0} Time = {1}", choose2, time2);

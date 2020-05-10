@@ -22,7 +22,8 @@ namespace mastersProject1
 
         public static double GetTimeFromLog(int choose)
         {
-            StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
+            //StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
+            StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\OSOBISTE\UAM\Magisterka\Log\");
             filePath1.Append(choose.ToString() + ".txt");
             string filePathA = filePath1.ToString();
             double timeCh = readTime.ReadFromLog(filePathA);

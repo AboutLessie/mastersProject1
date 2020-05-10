@@ -6,6 +6,8 @@ using Autotest.Configuration;
 using Autotest.Tests;
 using Autotest.Logger;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace mastersProject1
 {
@@ -20,7 +22,8 @@ namespace mastersProject1
      
         public static Boolean LogExist(int choose)
         {
-            StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
+           // StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
+            StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\OSOBISTE\UAM\Magisterka\Log\");
             filePath1.Append(choose.ToString() + ".txt");
             string filePathA = filePath1.ToString();
             bool fileExist = File.Exists(filePathA);
@@ -39,6 +42,12 @@ namespace mastersProject1
 
         public static void RunAllTest(int[] chooseList)
         {
+            List<string> orderTests = new List<string>();
+            for (int i=0;i<=chooseList.Length;i++)
+            {
+                orderTests.Add("Test" + chooseList[i].ToString());
+            }
+
             Stopwatch sw = new Stopwatch();
             sw.Start();
             
@@ -49,11 +58,13 @@ namespace mastersProject1
 
                 LogInOut logIn = new LogInOut();
 
-                logIn.Test1(driver);
-                logIn.Test2(driver);
-                logIn.Test3(driver);
-                logIn.Test4(driver);
-
+                /*for(int j = 0; j < orderTests.Count; j++)
+                {
+                    MethodInfo mi = this.GetType().GetMethod(orderTests[j]);
+                    LogInOut logInClass = new LogInOut();
+                    mi.Invoke(this, null);
+                }*/
+                
                 LogMaker log = new LogMaker();
             }
             catch (Exception e)

@@ -61,6 +61,7 @@ namespace mastersProject1
 
             Console.WriteLine("Number of iterations in general: {0}", iterations);
             Console.ReadLine();
+            
         }
     }
 }

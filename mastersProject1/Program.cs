@@ -22,6 +22,7 @@ namespace mastersProject1
             RandomChoose rc = new RandomChoose();
             rc.RandomCalculations(iterations, countTest);
 
+            
         }
     }
 }

@@ -398,6 +398,18 @@ namespace mastersProject1
             double time7 = rt.GetTimeFromLog(choose7);
             double time8 = rt.GetTimeFromLog(choose8);
 
+            Dictionary<int, double> result = new Dictionary<int, double>();
+            result.Add(choose1, time1);
+            result.Add(choose2, time2);
+            result.Add(choose3, time3);
+            result.Add(choose4, time4);
+            result.Add(choose5, time5);
+            result.Add(choose6, time6);
+            result.Add(choose7, time7);
+            result.Add(choose8, time8);
+
+            //var min = result.Aggregate((l, r) => l.Value < r.Value ? l : r).Key;
+
             Console.WriteLine("Choose = {0} Time = {1}", choose1, time1);
             Console.WriteLine("Choose = {0} Time = {1}", choose2, time2);
             Console.WriteLine("Choose = {0} Time = {1}", choose3, time3);

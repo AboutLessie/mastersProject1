@@ -14,7 +14,7 @@ namespace mastersProject1
     public class RunTest
     {
      
-        public static Boolean LogExist(int choose)
+        public Boolean LogExist(int choose)
         {
            // StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\Log\");
             StringBuilder filePath1 = new StringBuilder(@"C:\Users\Alicja\Desktop\OSOBISTE\UAM\Magisterka\Log\");
@@ -29,13 +29,13 @@ namespace mastersProject1
             readTime rt = new readTime();
             if(!LogExist(choose))
             {
-                RunAllTest(chooseList);
+                RunAllTest(chooseList, choose);
             }
             double timeCh = rt.GetTimeFromLog(choose);
             return timeCh;
         }
 
-        public void RunAllTest(int[] chooseList)
+        public void RunAllTest(int[] chooseList, int choose)
         {
             List<string> orderTests = new List<string>();
             for (int i=0;i<chooseList.Length;i++)
@@ -55,23 +55,22 @@ namespace mastersProject1
 
                 for(int j = 0; j < orderTests.Count; j++)
                 {
-                    MethodInfo mi = this.GetType().GetMethod(orderTests[j]);
+                    MethodInfo mi = logIn.GetType().GetMethod("Test"+orderTests[j]);
                     LogInOut logInClass = new LogInOut();
                     mi.Invoke(this, null);
                 }
                 
-                LogMaker log = new LogMaker();
+                LogMaker log = new LogMaker(choose);
             }
             catch (Exception e)
             {
-                LogMaker log = new LogMaker();
+                LogMaker log = new LogMaker(choose);
             }
             finally
             {
-                LogMaker log = new LogMaker();
+                LogMaker log = new LogMaker(choose);
                 sw.Stop();
-                log.AddToLog(sw.Elapsed.ToString());
-                log.CloseLog();
+                log.AddToLog("TimeSum=" + sw.Elapsed.TotalSeconds.ToString());
             }
         }
     }

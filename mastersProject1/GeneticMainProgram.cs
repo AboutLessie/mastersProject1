@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace mastersProject1
 {
     public class GeneticMainProgram
     {
-        public void GeneticAlgorithm(int iterations, int countTest)
+        public Dictionary<int,double> GeneticAlgorithm(int iterations, int countTest)
         {
             System.Random random = new System.Random();
             //int counterOfChrom = 0;
@@ -400,27 +401,80 @@ namespace mastersProject1
 
             Dictionary<int, double> result = new Dictionary<int, double>();
             result.Add(choose1, time1);
-            result.Add(choose2, time2);
-            result.Add(choose3, time3);
-            result.Add(choose4, time4);
-            result.Add(choose5, time5);
-            result.Add(choose6, time6);
-            result.Add(choose7, time7);
-            result.Add(choose8, time8);
+            if (!result.ContainsKey(choose2))
+            {
+                result.Add(choose2, time2);
+            }
+            if (!result.ContainsKey(choose3))
+            {
+                result.Add(choose3, time3);
+            }
+            if (!result.ContainsKey(choose4))
+            {
+                result.Add(choose4, time4);
+            }
+            if (!result.ContainsKey(choose5))
+            {
+                result.Add(choose5, time5);
+            }
+            if (!result.ContainsKey(choose6))
+            {
+                result.Add(choose6, time6);
+            }
+            if (!result.ContainsKey(choose7))
+            {
+                result.Add(choose7, time7);
+            }
+            if (!result.ContainsKey(choose8))
+            {
+                result.Add(choose8, time8);
+            }
+                                 
 
-            //var min = result.Aggregate((l, r) => l.Value < r.Value ? l : r).Key;
+            double bestResult = 0;
+            Stack<double> st = new Stack<double>();
+            st.Push(time1);
+            st.Push(time2);
+            st.Push(time3);
+            st.Push(time4);
+            st.Push(time5);
+            st.Push(time6);
+            st.Push(time7);
+            st.Push(time8);
+            Stack<double> tmpStack = sortstack(st);
+            if (tmpStack.Count > 0)
+            {
+                bestResult = tmpStack.Peek();
+            }
+            var bestChoose = result.FirstOrDefault(x => x.Value == bestResult).Key;
 
-            Console.WriteLine("Choose = {0} Time = {1}", choose1, time1);
-            Console.WriteLine("Choose = {0} Time = {1}", choose2, time2);
-            Console.WriteLine("Choose = {0} Time = {1}", choose3, time3);
-            Console.WriteLine("Choose = {0} Time = {1}", choose4, time4);
-            Console.WriteLine("Choose = {0} Time = {1}", choose5, time5);
-            Console.WriteLine("Choose = {0} Time = {1}", choose6, time6);
-            Console.WriteLine("Choose = {0} Time = {1}", choose7, time7);
-            Console.WriteLine("Choose = {0} Time = {1}", choose8, time8);
+            Dictionary<int, double> bestResultPair = new Dictionary<int, double>();
+            bestResultPair.Add(bestChoose, bestResult);
+            Console.WriteLine("\n");
+            Console.WriteLine("Generic Algorithm END");
+            return bestResultPair;
+        }
+        public static Stack<double> sortstack(Stack<double> input)
+        {
+            Stack<double> tmpStack = new Stack<double>();
+            while (input.Count > 0)
+            {
+                // pop out the first element  
+                double tmp = input.Pop();
 
-            Console.WriteLine("END");
-            Console.ReadKey();
+                // while temporary stack is not empty and  
+                // top of stack is greater than temp  
+                while (tmpStack.Count > 0 && tmpStack.Peek() > tmp)
+                {
+                    // pop from temporary stack and  
+                    // push it to the input stack  
+                    input.Push(tmpStack.Pop());
+                }
+
+                // push temp in tempory of stack  
+                tmpStack.Push(tmp);
+            }
+            return tmpStack;
         }
     }
 }

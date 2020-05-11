@@ -14,13 +14,13 @@ namespace Autotest.Configuration
             {
                 case "Chrome":
                     {
-                        driver = new ChromeDriver(@"C:\git\Systell\AutomationTest\Drivers");
+                        driver = new ChromeDriver(@"C:\git\ContactCenter\AutomationTest\Drivers");
                         driver.Manage().Window.Maximize();
                         return driver;
                     }
                 default:
                     {
-                        driver = new InternetExplorerDriver(@"C:\git\Systell\AutomationTest\Drivers");
+                        driver = new InternetExplorerDriver(@"C:\git\ContactCenter\AutomationTest\Drivers");
                         driver.Manage().Window.Maximize();
                         driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(20);
                         return driver;

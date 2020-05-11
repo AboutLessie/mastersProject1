@@ -8,10 +8,12 @@ namespace mastersProject1
 {
     public class RandomChoose
     {
-        public void RandomCalculations(int iterations, int countTest)
+        public Dictionary<int, double> RandomCalculations(int iterations, int countTest)
         {
-            Console.WriteLine("Random Calculations");
+            Console.WriteLine("\n");
+            Console.WriteLine("Random Calculations\n");
             readTime rt = new readTime();
+            RunTest runT = new RunTest();
             Random random = new System.Random();
             //int counterOfChrom = 0;
             
@@ -32,14 +34,15 @@ namespace mastersProject1
             int maxTablica = Tablica.Length - 1;
 
             int chooseA = random.Next(0, maxTablica);
-            //double timeA = RunTest.TestRunner(chooseA, possibilities[chooseA - 1]);
-            double timeA = rt.GetTimeFromLog(chooseA);
+            double timeA = runT.TestRunner(chooseA, possibilities[chooseA]);
+            //double timeA = rt.GetTimeFromLog(chooseA);
             Console.WriteLine("{0} time={1}", chooseA, timeA);
-            
+
+            double resultTime = 0;
+            int resultChoose = 0;
+
             for (int i = 0; i < iterations; i++)
             {
-                double resultTime;
-                int resultChoose;
                 int chooseB = random.Next(0, maxTablica);
                 //double timeB = RunTest.TestRunner(chooseB, possibilities[chooseB - 1]);
                 double timeB = rt.GetTimeFromLog(chooseB);
@@ -56,12 +59,12 @@ namespace mastersProject1
                     resultTime = timeA;
                     resultChoose = chooseA;
                 }
-                Console.WriteLine("Best result is: {0} for choose {1}", resultTime, resultChoose);
             }
+            Dictionary<int, double> bestResult = new Dictionary<int, double>();
+            bestResult.Add(resultChoose, resultTime);
 
-            Console.WriteLine("Number of iterations in general: {0}", iterations);
-            Console.ReadLine();
-            
+            //Console.WriteLine("Number of iterations in general: {0}", iterations);
+            return bestResult;
         }
     }
 }

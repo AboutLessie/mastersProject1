@@ -9,16 +9,16 @@ namespace Autotest.Logger
 {
     public class LogMaker : ILogMaker
     {
-        public LogMaker()
+        public LogMaker(int choose)
         {
-            LogName = "log" + GetDate() + ".txt";
+            LogName = choose.ToString() + ".txt";
         }
 
         public string LogName { get; set; }
 
         public void AddToLog(string text)
         {
-            string logFile = @"C:\Users\Alicja\Desktop\LogsTutorial\"+ LogName;
+            string logFile = @"C:\Users\Alicja\Desktop\OSOBISTE\UAM\Magisterka\Log\" + LogName;
             using (FileStream fs = new FileStream(logFile, FileMode.Append))
             {
                 using (StreamWriter sw = new StreamWriter(fs))

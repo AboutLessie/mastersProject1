@@ -21,7 +21,7 @@ namespace Autotest.Tests
         {
             string url = "https://jira.wmi.amu.edu.pl/secure/Dashboard.jspa";
             driver.Navigate().GoToUrl(url);
-
+            
             _mainPage.FindLogInTextBox(driver).Click();
             _mainPage.PassBox(driver).Click();
             _mainPage.LogInBtn(driver).Click();
